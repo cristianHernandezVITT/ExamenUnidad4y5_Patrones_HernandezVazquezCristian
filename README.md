@@ -1,3 +1,4 @@
+# Hernandez Vazquez Cristian
 # Juego Battleship
 
 Este proyecto implementa el patrón arquitectónico **Model-View-Controller (MVC)** en un juego de Battleship simplificado, junto con varios patrones de diseño organizados en módulos.
@@ -27,84 +28,6 @@ ProyectoFinal/
 ```
 
 ---
-
-## 📖 Explicación del Patrón MVC
-
-### **1. MODEL (Modelo) - `Model.js`**
-
-**Clases principales:**
-
-- **`TableroModelo`**: Representa la lógica de un tablero de juego
-  - Gestiona el grid 10x10
-  - Valida colocación de barcos
-  - Procesa disparos y actualiza estado
-  - Métodos: `puedeColocar()`, `colocar()`, `recibirDisparo()`
-
-- **`JuegoModelo`**: Orquesta el estado general del juego
-  - Coordina tableros de jugador y enemigo
-  - Métodos: `iniciarJuego()`, `disparar()`, `reiniciar()`
-
----
-
-### **2. VIEW (Vista) - `View.js`**
-
-**Responsabilidad:** Renderizar la interfaz y mostrar datos
-
-**Clases principales:**
-
-- **`FlyweightCeldaFactory`**: Patrón Flyweight
-  - Crea y cachea estilos de celdas para optimizar memoria
-  - Evita duplicar objetos de estilos idénticos
-
-- **`VistaTablero`**: Renderiza un tablero en DOM
-  - Crea celdas HTML dinámicamente
-  - Actualiza estilos según estado
-  - Métodos: `crear()`, `actualizar()`, `marcarSeleccion()`
-
-- **`VistaControles`**: Gestiona elementos de control
-  - Botones, selectores, información del juego
-  - Métodos: `actualizarContador()`, `agregarAlHistorial()`
-
-- **`VistaPrincipal`**: Coordina todas las vistas
-  - Integra múltiples componentes de vista
-
-**Patrones aplicados:**
-- Flyweight
-
----
-
-### **3. CONTROLLER (Controlador) - `Controller.js`**
-
-**Responsabilidad:** Mediar entre Modelo y Vista
-
-**Clases principales:**
-
-- **`ControladorJuego`**: Maneja la interacción usuario-aplicación
-  - Vincula eventos de la UI con métodos del modelo
-  - Procesa clics en tableros
-  - Actualiza la vista cuando cambia el modelo
-
-**Métodos principales:**
-- `inicializarEventos()`: Configura listeners de DOM
-- `manejarClickTableroJugador()`: Procesa colocación de barcos
-- `realizarDisparo()`: Ejecuta disparo del jugador
-- `actualizarVista()`: Sincroniza modelo con UI
-
----
-
-### **4. MAIN (Punto de entrada) - `Main.js`**
-
-**Responsabilidad:** Inicializar la aplicación
-
-```javascript
-// Crea instancias de M-V-C y las conecta
-const modelo = new JuegoModelo();
-const vista = new VistaPrincipal();
-const controlador = new ControladorJuego(modelo, vista);
-```
-
----
-
 ## 🔄 Flujo de Datos en MVC
 
 ```
@@ -114,7 +37,7 @@ Usuario Interactúa (Click)
         ↓
    MODEL (Actualiza estado)
         ↓
-CONTROLLER (Recibe notificación vía Observer)
+CONTROLLER (Recibe notificación)
         ↓
    VIEW (Se actualiza)
         ↓
@@ -196,3 +119,4 @@ Usuario ve cambios
 5. Usa **Ctrl+Z** para deshacer rondas completas
 
 ---
+

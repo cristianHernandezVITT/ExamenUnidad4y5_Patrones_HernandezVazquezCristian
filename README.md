@@ -1,4 +1,4 @@
-# Juego Battleship - Patrón MVC
+# Juego Battleship
 
 Este proyecto implementa el patrón arquitectónico **Model-View-Controller (MVC)** en un juego de Battleship simplificado, junto con varios patrones de diseño organizados en módulos.
 
@@ -32,8 +32,6 @@ ProyectoFinal/
 
 ### **1. MODEL (Modelo) - `Model.js`**
 
-**Responsabilidad:** Gestionar la lógica de negocio y los datos
-
 **Clases principales:**
 
 - **`TableroModelo`**: Representa la lógica de un tablero de juego
@@ -44,11 +42,7 @@ ProyectoFinal/
 
 - **`JuegoModelo`**: Orquesta el estado general del juego
   - Coordina tableros de jugador y enemigo
-  - Implementa patrón Observer para notificar cambios
   - Métodos: `iniciarJuego()`, `disparar()`, `reiniciar()`
-
-**Patrones aplicados:**
-- Observer Pattern (para notificar cambios)
 
 ---
 
@@ -75,7 +69,7 @@ ProyectoFinal/
   - Integra múltiples componentes de vista
 
 **Patrones aplicados:**
-- Flyweight Pattern
+- Flyweight
 
 ---
 
@@ -89,7 +83,6 @@ ProyectoFinal/
   - Vincula eventos de la UI con métodos del modelo
   - Procesa clics en tableros
   - Actualiza la vista cuando cambia el modelo
-  - Implementa Observer para recibir notificaciones del modelo
 
 **Métodos principales:**
 - `inicializarEventos()`: Configura listeners de DOM
@@ -140,7 +133,7 @@ Usuario ve cambios
 
 ---
 
-### **2. Memento Pattern**
+### **2. Patrón Memento **
 **Ubicación:** `Memento/Memento.js` y `Memento/Caretaker.js`
 
 **Propósito:** Capturar y restaurar estados anteriores del juego sin violar encapsulamiento
@@ -156,7 +149,7 @@ Usuario ve cambios
 
 ---
 
-### **3. Object Pool Pattern**
+### **3. Patrón Object Pool **
 **Ubicación:** `ObjectPool/PoolDisparos.js`
 
 **Propósito:** Reutilizar objetos de disparo en lugar de crear/destruir constantemente
@@ -167,14 +160,9 @@ Usuario ve cambios
   - `liberar()`: Devuelve un disparo al pool para reutilización
   - `reducirCapacidad()`: Reduce capacidad máxima cuando enemigo golpea
 
-**Ventajas:**
-- Mejora rendimiento evitando garbage collection frecuente
-- Reduce consumo de memoria
-- Gestión eficiente de recursos limitados
-
 ---
 
-### **4. Flyweight Pattern**
+### **4. Patrón Flyweight **
 **Ubicación:** `Flyweight/FlyweightCeldaFactory.js`
 
 **Propósito:** Compartir objetos para reducir drásticamente el uso de memoria en el renderizado
@@ -191,24 +179,7 @@ Usuario ve cambios
 
 ---
 
-### **5. Observer Pattern**
-**Ubicación:** Implementado en `Model.js` y `Controller.js`
-
-**Propósito:** Notificar cambios del modelo sin acoplamiento directo
-
-**Implementación:**
-- El modelo notifica eventos (disparo_realizado, juego_finalizado, etc.)
-- El controlador se suscribe como observador
-- Actualizaciones automáticas de la vista cuando cambia el modelo
-
-**Ventajas:**
-- Desacopla completamente Model de Controller
-- Permite múltiples observadores del mismo modelo
-- Facilita extensibilidad (agregar nuevos observadores)
-
----
-
-## 🎮 Cómo Usar
+## Cómo Usar
 
 1. Abre `program.HTML` en un navegador
 2. **Coloca tus piezas:**
@@ -225,27 +196,3 @@ Usuario ve cambios
 5. Usa **Ctrl+Z** para deshacer rondas completas
 
 ---
-
-## 🏗️ Ventajas del Patrón MVC
-
-| Aspecto | Beneficio |
-|--------|-----------|
-| **Mantenimiento** | Código organizado y fácil de localizar |
-| **Testing** | Cada capa se puede probar independientemente |
-| **Reutilización** | La lógica (Model) se puede usar en diferentes UIs |
-| **Escalabilidad** | Fácil agregar nuevas características |
-| **Colaboración** | Diferentes desarrolladores pueden trabajar en paralelo |
-
----
-
-## 📝 Notas Técnicas
-
-- Usa JavaScript vanilla (sin frameworks)
-- Grid 10x10 con 2 buques (2 celdas) y 1 submarino (3 celdas)
-- Pool de disparos = celdas ocupadas por el jugador
-- Interfaz responsiva con CSS Grid
-
----
-
-**Autor:** Implementación educativa del patrón MVC
-**Fecha:** Diciembre 2025

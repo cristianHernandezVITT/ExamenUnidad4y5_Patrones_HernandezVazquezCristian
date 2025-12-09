@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Battleship</title>
+  <link rel="stylesheet" href="Styles.CSS" />
+</head>
+<body>
+  <header>
+    <h1>Battleship</h1>
+  </header>
+
+  <section id="contenedor-controles">
+    <div class="control">
+      <label>Seleccionar pieza:</label>
+      <select id="select-pieza">
+        <option value="buque">Buque (2)</option>
+        <option value="submarino">Submarino (3)</option>
+      </select>
+    </div>
+    <div class="control">
+      <label>Orientación:</label>
+      <select id="select-orientacion">
+        <option value="horizontal">Horizontal →</option>
+        <option value="vertical">Vertical ↓</option>
+        <option value="diag-dr">Diagonal ↘</option>
+        <option value="diag-ur">Diagonal ↗</option>
+      </select>
+    </div>
+    <div class="control">
+      <label>Piezas restantes:</label>
+      <span id="contador-piezas">Buques: 2 | Submarinos: 1</span>
+    </div>
+    <div class="control">
+      <button id="btn-iniciar" disabled>Iniciar Juego</button>
+      <button id="btn-ver-enemigo">Ver Tablero Enemigo</button>
+      <button id="btn-volver" style="display:none">Volver a mi tablero</button>
+    </div>
+  </section>
+
+  <main id="principal">
+    <section id="vista-jugador" class="vista">
+      <h2>Mi Tablero</h2>
+      <div class="tableros">
+        <div>
+          <div class="panel">
+            <h3>Tablero de Piezas</h3>
+            <div id="tablero-jugador" class="tablero"></div>
+          </div>
+        </div>
+        <div>
+          <div class="panel">
+            <h3>Tablero de Disparos</h3>
+            <div id="tablero-disparos" class="tablero"></div>
+            <div class="acciones">
+              <span id="pool-info">Disparos disponibles: 0</span>
+              <button id="btn-disparar" disabled>Disparar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="historial">
+        <h4>Historial (mis disparos)</h4>
+        <ul id="historial-jugador"></ul>
+      </div>
+    </section>
+
+    <section id="vista-enemigo" class="vista" style="display:none">
+      <h2>Tablero Enemigo (Vista)</h2>
+      <div class="tableros">
+        <div>
+          <div class="panel">
+            <h3>Tablero Enemigo</h3>
+            <div id="tablero-enemigo" class="tablero"></div>
+          </div>
+        </div>
+        <div>
+          <div class="panel">
+            <h3>Historial (disparos del enemigo)</h3>
+            <ul id="historial-enemigo"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Reglas: Coloca 2 Buques (2) y 1 Submarino (3). Orientaciones permitidas. Usa alertas para turnos y resultados.</small>
+  </footer>
+
+  <!-- Patrones de Diseño -->
+  <script src="Memento/Memento.js"></script>
+  <script src="Memento/Caretaker.js"></script>
+  <script src="ObjectPool/PoolDisparos.js"></script>
+  <script src="Flyweight/FlyweightCeldaFactory.js"></script>
+  
+  <!-- Arquitectura MVC -->
+  <script src="Model.js"></script>
+  <script src="View.js"></script>
+  <script src="Controller.js"></script>
+  <script src="Main.js"></script>
+</body>
+</html>

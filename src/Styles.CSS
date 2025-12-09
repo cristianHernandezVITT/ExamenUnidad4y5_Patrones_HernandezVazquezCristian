@@ -1,0 +1,143 @@
+:root{
+  --celda-size:28px;
+  --gap:8px;
+}
+*
+{
+  box-sizing:border-box;
+  font-family:Segoe UI, Tahoma, sans-serif
+}
+body
+{
+  padding:16px;background:#f6f8fa;
+  color:#122
+}
+header h1
+{
+  margin:0 0 12px
+}
+#contenedor-controles
+{display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:12px
+}
+.control
+{
+  display:flex;align-items:center;gap:6px
+}
+.tableros
+{
+  display:flex;gap:20px;flex-wrap:wrap
+}
+.panel
+{
+  background:white;
+  padding:8px;
+  border-radius:6px;
+  border:1px solid #ddd;
+  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+} 
+.tablero
+{
+  display:inline-grid;
+  grid-template-columns:repeat(10, var(--celda-size));
+  grid-template-rows:repeat(10,var(--celda-size));
+  gap:2px;
+  padding:6px;
+}       
+.tablero.label-grid
+{
+  grid-template-columns: 24px repeat(10, var(--celda-size));
+  grid-template-rows: 18px repeat(10,var(--celda-size));
+}
+.label
+{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:#334;padding:2px
+}
+.celda
+{
+  width:var(--celda-size);
+  height:var(--celda-size);
+  background:#e9eef3;
+  border-radius:3px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-size:11px
+}
+.celda:hover
+{
+  outline:2px solid #bcd
+}
+.celda.barco
+{
+  background:#a0c4ff
+}
+.celda.submarino
+{
+  background:#8ee6b0
+}
+.celda.hit
+{
+  background:#ff6b6b;
+  color:white
+}
+.celda.miss
+{
+  background:#94a3b8;
+  color:white
+}
+.celda.seleccion
+{
+  outline:3px solid #ffd166
+}
+.celda.disparar-seleccionado
+{
+  background: #e6f337 !important;
+  outline: 2px solid #adb80b !important;
+  box-shadow: 0 0 6px rgba(173, 184, 11, 0.4) !important;
+  border-radius: 3px !important;
+}
+.celda.preview-invalido
+{
+  outline:3px solid #ff6b6b;
+  background:#ffcccc
+}
+.acciones
+{margin-top:6px;
+  display:flex;
+  gap:8px;
+  align-items:center
+}
+.historial
+{
+  margin-top:12px
+}
+ul
+{
+  padding-left:18px
+}
+button
+{
+  padding:6px 10px;
+  border-radius:4px;
+  border:1px solid #888;
+  background:#fff;
+  cursor:pointer
+}
+button:disabled
+{
+  opacity:0.5;
+  cursor:not-allowed
+}
+footer
+{
+  margin-top:14px;
+  color:#445
+}
